@@ -1,0 +1,2 @@
+# tsx
+tsx demo student
