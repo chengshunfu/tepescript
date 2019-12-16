@@ -10,15 +10,6 @@ var a;
 //获取到对象值的类型然后定义，通过这个类型去约束其他的对象
 var b;
 (function (b) {
-    // let p ={
-    //     name:'baiyan',
-    //     age:10
-    // }
-    // type Person = typeof p;
-    // let p2:Person={
-    //     name:'zhufeng',
-    //     age:20
-    // }
     var p1 = {
         name: 'baiyan',
         age: 10
