@@ -27,7 +27,11 @@ namespace b{
     //     name:'zhufeng',
     //     age:20
     // }
-
+    interface Person{
+        name:string,
+        age:number,
+        gender:'male'|'femle'
+    }
 
     type plainPerson = {
         [key in keyof Person]?:Person[key]
