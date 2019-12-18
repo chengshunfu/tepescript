@@ -1,4 +1,4 @@
-import axios, { AxiosResponse, AxiosRequestConfig } from './axios';
+import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
 let baseUrl = 'http://localhost:9090';
 
 //返回给服务器的对象
@@ -7,19 +7,28 @@ interface User {
     password: string
 }
 let user: User = {
-    name: 'baiyan',
+    name: 'danshi',
     password: '123456'
 }
-axios<User>({
+const CancelToken = axios.CancelToken;
+const isCancel = axios.isCancel;
+const source = CancelToken.source();
+console.log(source)
+axios({
     method: 'post',
     url: baseUrl + '/post',
     headers: {
-        'Content-Type': 'application/json'
     },
+    cancelToken:source.token,
     data: user
 }).then((res: AxiosResponse<User>) => {
     console.log(res);
     return res.data;
-}).then((error: any) => {
-    console.log(error);
+}).catch((error: any) => {
+    if(isCancel(error)){
+        console.log('需要取消请求',error)
+    }else{
+        console.log(error); 
+    }
 })
+source.cancel('用户取消请求')
